@@ -43,8 +43,18 @@ struct ContentView: View {
         }
     }
     
+    func delete(offsets: IndexSet) {
+        withAnimation {
+            notes.remove(atOffsets: offsets)
+            save()
+        }
+    }
+    
+    
     var body: some View {
-         
+        NavigationView {
+            
+        
         VStack {
             HStack(alignment: .center, spacing: 6) {
                 TextField("Add New Note", text: $text)
@@ -64,13 +74,38 @@ struct ContentView: View {
                 //.buttonStyle(BorderedButtonStyle(tint: .accentColor))
             } //: HStack
             Spacer()
-            Text("\(notes.count)")
+            if notes.count >= 1 {
+                List {
+                    ForEach(0..<notes.count, id: \.self) { i in
+                        NavigationLink(destination: DetailView(note: notes[i], count: notes.count, index: i) ) {
+                            HStack {
+                                Capsule()
+                                    .frame(width: 4)
+                                    .foregroundColor(.accentColor)
+                                Text(notes[i].text)
+                                    .lineLimit(1)
+                                    .padding(.leading, 5)
+                            } //: HStack
+                        } //: NavigationLink
+                    } //: ForEach
+                    .onDelete(perform: delete)
+                }//: List
+            } else {
+                Spacer()
+                Image(systemName: "note.text")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(.gray)
+                    .opacity(0.25)
+                    .padding(25)
+                Spacer()
+            }
         } //: VStack
         .onAppear(perform: {
             load()
         })
         .navigationTitle("Notes")
-        
+        }
     }
 }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492D4FDD2AB36F5C00331319 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D4FDC2AB36F5C00331319 /* DetailView.swift */; };
+		492D4FDF2AB3769200331319 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D4FDE2AB3769200331319 /* CreditsView.swift */; };
+		492D4FE22AB3772A00331319 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492D4FE12AB3772A00331319 /* HeaderView.swift */; };
 		49A6D0BF2AADF292009B6A3E /* SwiftUI-WatchOsNotes-Sample Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 49A6D0BE2AADF292009B6A3E /* SwiftUI-WatchOsNotes-Sample Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		49A6D0C42AADF292009B6A3E /* SwiftUI_WatchOsNotes_SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6D0C32AADF292009B6A3E /* SwiftUI_WatchOsNotes_SampleApp.swift */; };
 		49A6D0C62AADF292009B6A3E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6D0C52AADF292009B6A3E /* ContentView.swift */; };
@@ -40,6 +43,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		492D4FDC2AB36F5C00331319 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		492D4FDE2AB3769200331319 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
+		492D4FE12AB3772A00331319 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		49A6D0B82AADF292009B6A3E /* SwiftUI-WatchOsNotes-Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-WatchOsNotes-Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A6D0BE2AADF292009B6A3E /* SwiftUI-WatchOsNotes-Sample Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-WatchOsNotes-Sample Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A6D0C32AADF292009B6A3E /* SwiftUI_WatchOsNotes_SampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_WatchOsNotes_SampleApp.swift; sourceTree = "<group>"; };
@@ -60,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		492D4FE02AB3770F00331319 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				492D4FE12AB3772A00331319 /* HeaderView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		49A6D0B12AADF292009B6A3E = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +94,7 @@
 		49A6D0C22AADF292009B6A3E /* SwiftUI-WatchOsNotes-Sample Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				492D4FE02AB3770F00331319 /* Component */,
 				49A6D0D62AADFB39009B6A3E /* Model */,
 				49A6D0C32AADF292009B6A3E /* SwiftUI_WatchOsNotes_SampleApp.swift */,
 				49A6D0D52AADF421009B6A3E /* View */,
@@ -101,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				49A6D0C52AADF292009B6A3E /* ContentView.swift */,
+				492D4FDC2AB36F5C00331319 /* DetailView.swift */,
+				492D4FDE2AB3769200331319 /* CreditsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,7 +229,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				49A6D0C62AADF292009B6A3E /* ContentView.swift in Sources */,
+				492D4FE22AB3772A00331319 /* HeaderView.swift in Sources */,
+				492D4FDD2AB36F5C00331319 /* DetailView.swift in Sources */,
 				49A6D0C42AADF292009B6A3E /* SwiftUI_WatchOsNotes_SampleApp.swift in Sources */,
+				492D4FDF2AB3769200331319 /* CreditsView.swift in Sources */,
 				49A6D0D82AAE0707009B6A3E /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
