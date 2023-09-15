@@ -12,6 +12,7 @@ struct DetailView: View {
     let count: Int
     let index: Int
     @State private var isCreditsPresented: Bool = false
+    @State private var isSettingssPresented: Bool = false
     
     var body: some View {
         VStack {
@@ -31,6 +32,13 @@ struct DetailView: View {
             HStack(alignment: .center) {
                 Image(systemName: "gear")
                     .imageScale(.large)
+                    .onTapGesture {
+                        isSettingssPresented.toggle()
+                    }
+                    .sheet(isPresented: $isSettingssPresented) {
+                        SettingsView()
+                    }
+                
                 Spacer()
                 Text("\(count) / \(index + 1)")
                 Spacer()
@@ -38,6 +46,9 @@ struct DetailView: View {
                     .imageScale(.large)
                     .onTapGesture {
                         isCreditsPresented.toggle()
+                    }
+                    .sheet(isPresented: $isCreditsPresented) {
+                        CreditsView()
                     }
             } //: HStack
             .foregroundColor(.secondary)

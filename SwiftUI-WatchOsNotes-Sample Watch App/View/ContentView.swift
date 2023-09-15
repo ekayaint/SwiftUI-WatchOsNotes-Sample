@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("lineCount") var lineCount: Int = 1
     @State private var notes: [Note] = [Note]()
     @State private var text: String = ""
     
@@ -83,7 +84,7 @@ struct ContentView: View {
                                     .frame(width: 4)
                                     .foregroundColor(.accentColor)
                                 Text(notes[i].text)
-                                    .lineLimit(1)
+                                    .lineLimit(lineCount)
                                     .padding(.leading, 5)
                             } //: HStack
                         } //: NavigationLink
