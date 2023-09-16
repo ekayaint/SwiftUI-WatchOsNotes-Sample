@@ -26,7 +26,7 @@ struct ContentView: View {
             
             try data.write(to: url)
         } catch {
-            print("Savinf data has failed")
+            print("Saving data has failed")
         }
     }
     
@@ -54,58 +54,56 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            
-        
-        VStack {
-            HStack(alignment: .center, spacing: 6) {
-                TextField("Add New Note", text: $text)
-                Button {
-                    guard text.isEmpty == false else { return }
-                    let note = Note(id: UUID(), text: text)
-                    notes.append(note)
-                    text = ""
-                    save()
-                } label: {
-                    Image(systemName: "plus.circle")
-                        .font(.system(size: 42, weight: .semibold))
+            VStack {
+                HStack(alignment: .center, spacing: 6) {
+                    TextField("Add New Note", text: $text)
+                    Button {
+                        guard text.isEmpty == false else { return }
+                        let note = Note(id: UUID(), text: text)
+                        notes.append(note)
+                        text = ""
+                        save()
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 42, weight: .semibold))
+                    }
+                    .fixedSize()
+                    .buttonStyle(PlainButtonStyle())
+                    .foregroundColor(.accentColor)
+                    //.buttonStyle(BorderedButtonStyle(tint: .accentColor))
+                } //: HStack
+                Spacer()
+                if notes.count >= 1 {
+                    List {
+                        ForEach(0..<notes.count, id: \.self) { i in
+                            NavigationLink(destination: DetailView(note: notes[i], count: notes.count, index: i) ) {
+                                HStack {
+                                    Capsule()
+                                        .frame(width: 4)
+                                        .foregroundColor(.accentColor)
+                                    Text(notes[i].text)
+                                        .lineLimit(lineCount)
+                                        .padding(.leading, 5)
+                                } //: HStack
+                            } //: NavigationLink
+                        } //: ForEach
+                        .onDelete(perform: delete)
+                    }//: List
+                } else {
+                    Spacer()
+                    Image(systemName: "note.text")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.gray)
+                        .opacity(0.25)
+                        .padding(25)
+                    Spacer()
                 }
-                .fixedSize()
-                .buttonStyle(PlainButtonStyle())
-                .foregroundColor(.accentColor)
-                //.buttonStyle(BorderedButtonStyle(tint: .accentColor))
-            } //: HStack
-            Spacer()
-            if notes.count >= 1 {
-                List {
-                    ForEach(0..<notes.count, id: \.self) { i in
-                        NavigationLink(destination: DetailView(note: notes[i], count: notes.count, index: i) ) {
-                            HStack {
-                                Capsule()
-                                    .frame(width: 4)
-                                    .foregroundColor(.accentColor)
-                                Text(notes[i].text)
-                                    .lineLimit(lineCount)
-                                    .padding(.leading, 5)
-                            } //: HStack
-                        } //: NavigationLink
-                    } //: ForEach
-                    .onDelete(perform: delete)
-                }//: List
-            } else {
-                Spacer()
-                Image(systemName: "note.text")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(.gray)
-                    .opacity(0.25)
-                    .padding(25)
-                Spacer()
-            }
-        } //: VStack
-        .onAppear(perform: {
-            load()
-        })
-        .navigationTitle("Notes")
+            } //: VStack
+            .onAppear(perform: {
+                load()
+            })
+            .navigationTitle("Notes")
         }
     }
 }
